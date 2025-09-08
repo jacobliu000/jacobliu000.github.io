@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    mainbackground : "#37353E"
+                }
+            }
+        }
+    }
+</script>
     <head>
         <title>
             Jacob Liu | Blog & Portfolio
-        </title>        
+        </title>    
+        <meta charset="UTF-8">
+        <link href="style.css" rel="stylesheet"> 
     </head>
-    <body>
+    <body class="bg-mainbackground text-white font-sans-['Open_Sans'] flex justify-center">
+        <div class="w-[60%] p-24">
+            <h1 class="text-2xl">Hi! I'm Jacob.</h1>
+            <ul class="flex space-x-2">
+                <li class=".list-none "><a href="https://github.com/bluesiarra">Github</a></li>
+                <li class=".list-none "><a href="https://github.com/bluesiarra">Linkedin</a></li>
+            </ul>
+        </div>
         
+
     </body>
 </html>
