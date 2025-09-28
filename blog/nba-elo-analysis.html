@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../tailwind-config.js"></script>
+    <head>
+        <title>
+            Using ELO rating system to analyze the NBA (and how it could be used to sports bet) | Jacob Liu
+        </title>    
+        <meta charset="UTF-8">
+    </head>
+
+
+    <body class="bg-mainbackground text-gray-300 font-sans-['Open_Sans'] text-lg">
+
+        <nav class="text-lg p-4 px-12">
+                <div class="flex space-x-6 justify-end">
+                <a href="../index.html" class="text-gray-200 hover:text-gray-100">about</a>
+                <a href="../blog.html" class="text-gray-200 hover:text-gray-100">blog</a>
+                </div>
+        </nav>
+
+        <div class="flex justify-center w-full h-center items-center">
+            <div class="w-[40%] p-24">
+                <h1 class="text-3xl">Using ELO rating system to analyze the NBA (and how it could be used to sports bet)</h1>
+                <h2 class="text-sm">27 September 2025</h2>
+
+                <br>
+
+                <p>
+                    In chess, the ELO rating system is used to calculated the relative skill of players. However, in theory, it could be applied to any game in which there are two players or teams competing, with only one winner. By simulating the entire 2024-25 NBA season using ELO ratings, we can find some interesting results. If you would like to delve deeper into the code behind the system, I recommend you checking out my github repository <a href="" class="hover:text-gray-100 font-semibold">here</a>.
+                    <br><br>
+                    Here's a brief summary of how I did it. In my code, I only factored in games from the regular season and not the playoffs, though you could easily change the variables a bit to account for the playoffs. I started off by sorting the dataset and removing unnecessary columns. Then I created a dictionary and initiated each team's ELO to 1500. For each game played, I calculated the expected win probability for each team and then updated the ELO ratings based off the actual results of the game. You can read about the ELO system and its equation in more detail <a href="https://en.wikipedia.org/wiki/Elo_rating_system" class="hover:text-gray-100 font-semibold">here</a>, as I won't get into the specifics of it. One change I did make is that when calculating the ELO, I gave the home team a small ELO boost to account for home court advantage. I tested various values for this and found the most accurate one was 32 through log loss.
+
+                    <br><br>
+                    After simulating the entire season this way, I found some very interesting results. Here are the final ELO ratings for each team at the end of the season:
+                    <br><br>
+
+
+                    <ol class="list-decimal list-inside space-y-1">
+                        <li>Thunder: 1729</li>
+                        <li>Cavaliers: 1670</li>
+                        <li>Celtics: 1667</li>
+                        <li>Clippers: 1608</li>
+                        <li>Lakers: 1600</li>
+                        <li>Pacers: 1593</li>
+                        <li>Timberwolves: 1591</li>
+                        <li>Rockets: 1590</li>
+                        <li>Warriors: 1589</li>
+                        <li>Bucks: 1573</li>
+                        <li>Nuggets: 1565</li>
+                        <li>Knicks: 1562</li>
+                        <li>Pistons: 1535</li>
+                        <li>Grizzlies: 1522</li>
+                        <li>Bulls: 1513</li>
+                        <li>Magic: 1512</li>
+                        <li>Kings: 1483</li>
+                        <li>Hawks: 1480</li>
+                        <li>Trail Blazers: 1477</li>
+                        <li>Mavericks: 1459</li>
+                        <li>Heat: 1456</li>
+                        <li>Suns: 1451</li>
+                        <li>Spurs: 1427</li>
+                        <li>Raptors: 1426</li>
+                        <li>Nets: 1361</li>
+                        <li>Pelicans: 1347</li>
+                        <li>76ers: 1318</li>
+                        <li>Wizards: 1316</li>
+                        <li>Hornets: 1288</li>
+                        <li>Jazz: 1278</li>
+                    </ol>
+
+                    <br><br>
+                    Almost immediately we can derive some very interesting observations. The top 3 in terms of win-loss were Thunder, Cavaliers and the Celtics, which matches the ELOs. However, it quickly begins to differ following that. The Clippers were 4th in ELO rankings but 8th overall in win-loss. Many other teams had this similar pattern. I'm not exactly sure why this is, but my main guess is that win-loss is very one dimensional and only calculates how many games a team won, while ELO takes into account the strength of the opponent. The general trends throughout remains mostly the same. 
+                    <br><br>
+
+                    How could you use this to bet? You can use these ELO values to immediately begin betting for the 2025-26 season. Firstly, to account for changes in team roster, injuries, etc, these ELOS should be slightly adjusted so that they are closer to the mean of 1500. Then, as the 25-26 season happens, update these ELOs accordingly. This would theoretically give you accurate ELOs and win probabilities for each team, with minimal time needed to adjust to the season.
+                    <br><br>
+                    In sports betting apps, odds are given in the form of a moneyline, indicating the money you would win. For example, lets take the opening night game of Warriors at Lakers. The Lakers have -165 odds while the warriors have +140 odds. For the warriors, this means betting $100 would win you $140, while for the Lakers, you would have to bet $165 to win $100. You can use this to find implied odds, which is the probability that a team will win according to the betting market. For the Warriors, this would be 41.67%, also representing that you would need to win 41.67% of your bets at those odds to break even.
+                    <br><br>
+                    We can use this to our advantage. Using our ELO ratings, we can calculate the expected win probability for each team. Make sure to factor in the home court advantage. If we calculated that the Lakers have a 55% chance of winning, and the warriors had a 45% chance of winning, it would be strategic to bet on the warriors. Why? This seems unintuitive, but even though the Warriors have a smaller chance of winning, the chance of winning is greater than the implied odds, which would theoretically grant profit in the long run.
+                    <br><br>
+                    This is a very simple way to use ELO ratings to bet. In actuality, this would be much more complex, as you would have to factor in injuries and other variables. Furthermore, sportsbooks are extremely good at setting odds, especially for popular things like the moneyline, making it almost impossible to find an edge and make a profit. However, this is a very easy way to learn how value betting works and can also be used to learn probability and expected value. 
+                </p>
+                
+            </div>
+        </div>
+        
+
+
+    </body>
+</html>
