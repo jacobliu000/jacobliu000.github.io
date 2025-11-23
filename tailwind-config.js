@@ -2,8 +2,10 @@
         theme: {
             extend: {
                 colors: {
-                    mainbackground : "#161616ff",
-                    textcol: "#9ca3af",
+                    mainbackground : "#f8f8f8ff",
+                    textcol: "#363636ff",
+                    texthover: "#5a5a5aff",
+
                 }
             }
         }

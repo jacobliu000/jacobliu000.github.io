@@ -11,15 +11,16 @@
             Using ELO rating system to analyze the NBA (and how it could be used to sports bet) | Jacob Liu
         </title>    
         <meta charset="UTF-8">
+        <meta name="description" content="An analysis of the NBA using the ELO rating system, and how it could be used to inform sports betting decisions.">
     </head>
 
 
-    <body class="bg-mainbackground text-gray-300 font-sans-['Open_Sans'] text-lg">
+    <body class="bg-mainbackground text-textcol font-sans-['Open_Sans'] text-lg">
 
         <nav class="text-lg p-4 px-12">
                 <div class="flex space-x-6 justify-end">
-                <a href="../index.html" class="text-gray-200 hover:text-gray-100">about</a>
-                <a href="../blog.html" class="text-gray-200 hover:text-gray-100">blog</a>
+                <a href="../index.html" class="text-textcol hover:text-texthover">about</a>
+                <a href="../blog.html" class="text-textcol hover:text-texthover">blog</a>
                 </div>
         </nav>
 
@@ -31,9 +32,9 @@
                 <br>
 
                 <p>
-                    In chess, the ELO rating system is used to calculated the relative skill of players. However, in theory, it could be applied to any game in which there are two players or teams competing, with only one winner. By simulating the entire 2024-25 NBA season using ELO ratings, we can find some interesting results. If you would like to delve deeper into the code behind the system, I recommend you checking out my github repository <a href="https://github.com/jacobliu000/nba-elo-algorithm" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-gray-100 font-semibold">here</a>.
+                    In chess, the ELO rating system is used to calculated the relative skill of players. However, in theory, it could be applied to any game in which there are two players or teams competing, with only one winner. By simulating the entire 2024-25 NBA season using ELO ratings, we can find some interesting results. If you would like to delve deeper into the code behind the system, I recommend you checking out my github repository <a href="https://github.com/jacobliu000/nba-elo-algorithm" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-texthover font-semibold">here</a>.
                     <br><br>
-                    Here's a brief summary of how I did it. In my code, I only factored in games from the regular season and not the playoffs, though you could easily change the variables a bit to account for the playoffs. I started off by sorting the dataset and removing unnecessary columns. Then I created a dictionary and initiated each team's ELO to 1500. For each game played, I calculated the expected win probability for each team and then updated the ELO ratings based off the actual results of the game. You can read about the ELO system and its equation in more detail <a href="https://en.wikipedia.org/wiki/Elo_rating_system" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-gray-100 font-semibold">here</a>, as I won't get into the specifics of it. One change I did make is that when calculating the ELO, I gave the home team a small ELO boost to account for home court advantage. I tested various values for this and found the most accurate one was 32 through log loss.
+                    Here's a brief summary of how I did it. In my code, I only factored in games from the regular season and not the playoffs, though you could easily change the variables a bit to account for the playoffs. I started off by sorting the dataset and removing unnecessary columns. Then I created a dictionary and initiated each team's ELO to 1500. For each game played, I calculated the expected win probability for each team and then updated the ELO ratings based off the actual results of the game. You can read about the ELO system and its equation in more detail <a href="https://en.wikipedia.org/wiki/Elo_rating_system" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-texthover font-semibold">here</a>, as I won't get into the specifics of it. One change I did make is that when calculating the ELO, I gave the home team a small ELO boost to account for home court advantage. I tested various values for this and found the most accurate one was 32 through log loss.
 
                     <br><br>
                     After simulating the entire season this way, I found some very interesting results. Here are the final ELO ratings for each team at the end of the season:

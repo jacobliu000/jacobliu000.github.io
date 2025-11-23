@@ -11,15 +11,16 @@
             Predicting NBA team over-unders | Jacob Liu
         </title>    
         <meta charset="UTF-8">
+        <meta name="description" content="Using exponential decay to predict NBA team score totals for this season.">
     </head>
 
 
-    <body class="bg-mainbackground text-gray-300 font-sans-['Open_Sans'] text-lg">
+    <body class="bg-mainbackground text-textcol font-sans-['Open_Sans'] text-lg">
 
         <nav class="text-lg p-4 px-12">
                 <div class="flex space-x-6 justify-end">
-                <a href="../index.html" class="text-gray-200 hover:text-gray-100">about</a>
-                <a href="../blog.html" class="text-gray-200 hover:text-gray-100">blog</a>
+                <a href="../index.html" class="text-textcol hover:text-texthover">about</a>
+                <a href="../blog.html" class="text-textcol hover:text-texthover">blog</a>
                 </div>
         </nav>
 
@@ -31,7 +32,7 @@
                 <br>
 
                 <p>
-                    We continue to look into various NBA statistics. This time, we'll be examining NBA team over unders. An over-under is a prediction by sportsbooks about how many points a team could score in a game. For example, the line could be Warriors over-under 115.5, which means you can either bet on the warriors scoring over 115 points or under 115 points. You can see my full model in my github repository <a href="https://github.com/jacobliu000/nba-elo-algorithm" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-gray-100 font-semibold">here</a>.
+                    We continue to look into various NBA statistics. This time, we'll be examining NBA team over unders. An over-under is a prediction by sportsbooks about how many points a team could score in a game. For example, the line could be Warriors over-under 115.5, which means you can either bet on the warriors scoring over 115 points or under 115 points. You can see my full model in my github repository <a href="https://github.com/jacobliu000/nba-elo-algorithm" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-texthover font-semibold">here</a>.
                     <br><br>
                     The goal of this project is to create a program that, given a team name and a line, will be able to return a probability of whether or not that team goes over or under that line. To do this, I used the same dataset I used in my last blog post, which contains every NBA game's statistics. I decided to only use the scores from the regular 2024-25 season.
                     <br><br>
@@ -39,7 +40,7 @@
                     <br><br>
                     However, I wanted to improve the model even more. I did this by using a weighted average. Each game was given a weight, which would decay exponentially as the game became further away. For example, the most recent game would be given a weight of 0.9, the second most recent would be given a weight of 0.9^2, and so on. This way, more recent games would have a larger impact on the average, which helps account for things like lineup changes and general trends.
                     <br><br>
-                    To test for the best decay value, I used the log loss algorithm. Log loss is the measure of how well a model is able to predict the probability of an event. You can read up about it <a href="https://en.wikipedia.org/wiki/Loss_functions_for_classification" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-gray-100 font-semibold">here</a>. Essentially, I ran the simulation on the entire 24-25 season, using different decay values from 0 to 1, and calculated the log loss for each decay value. Depending on the over under line, this decay value would change slightly, but it was mainly > 0.95. 
+                    To test for the best decay value, I used the log loss algorithm. Log loss is the measure of how well a model is able to predict the probability of an event. You can read up about it <a href="https://en.wikipedia.org/wiki/Loss_functions_for_classification" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-texthover font-semibold">here</a>. Essentially, I ran the simulation on the entire 24-25 season, using different decay values from 0 to 1, and calculated the log loss for each decay value. Depending on the over under line, this decay value would change slightly, but it was mainly > 0.95. 
                     <br><br>
                     One of analyzing this over other things in NBA sports betting is that it's more niche. Moneylines, which we covered through the ELO method in the last blog post, are much more common, meaning that the sportsbook odds are extremely sharp and difficult to bet on. It's much easier to find an edge on things that less people bet on. 
                     <br><br>
