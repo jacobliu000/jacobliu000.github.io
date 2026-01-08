@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../tailwind-config.js"></script>
+    <head>
+        <title>
+            Here's why every horse is (technically) the same color | Jacob Liu
+        </title>    
+        <meta charset="UTF-8">
+        <meta name="description" content="A simple tutorial on mathematical induction, and how it can be used to (falsely) prove that all horses are the same color.">
+    </head>
+
+
+    <body class="bg-mainbackground text-textcol font-sans-['Open_Sans'] text-lg">
+
+        <nav class="text-lg p-4 px-12">
+                <div class="flex space-x-6 justify-end">
+                <a href="../index.html" class="text-textcol hover:text-texthover">about</a>
+                <a href="../blog.html" class="text-textcol hover:text-texthover">blog</a>
+                </div>
+        </nav>
+
+        <div class="flex justify-center w-full h-center items-center">
+            <div class="w-[60%] p-24">
+                <h1 class="text-3xl">Here's why every horse is (technically) the same color</h1>
+                <h2 class="text-sm">7 January 2025 | Jacob Liu</h2>
+
+                <br>
+
+                <p>
+                    Yes, the title is correct. Every horse is the same color. Let me explain. Let's first make the claim that any N horses are the same color. We'll assume that this is true. If N horses are the same color, then N+1 horses are also the same color. Here's why:
+
+                    <br><br>
+                    If you have a group of N+1 horses and remove one random horse from the group, you are left with N horses. Since any N horses are the same color by our previous assumption, we know that the remaining group must all be the same color. Now, put the removed horse back and remove a different horse from the group. Once again, we are left with N horses that also must be the same color. Since both of these groups share N-1 horses in common, all N+1 horses must be the same color as well. Therefore, if any N horses are the same color, then N+1 horses are also the same color.
+                    <br><br>
+
+                    Now if N=1, we have one horse, which is obviously the same color as itself. Therefore, any N+1 horses must be the same color by our earlier proof. Therefore, any 2 horses are the same color. This continues 3, 4, 5, to infinity, proving that any amount of horses are the same color.
+                    
+                    <br><br>
+                    This is a classic faulty trick in mathematical induction, a concept which is otherwise very useful for proving statements about integers. Mathematical induction is proving that a statement is true for all integers greater than a base case by proving that if it applies to N, it applies to N+1 too. Then, you provide a valid base case, therefore proving the statement. 
+                    <br><br>
+                    Now, lets prove a real mathematical statement using induction. Let's prove that the sum of the first N odd numbers is N^2. 
+                    <br><br>
+                    First let's assume that this statement is true for N. The next odd number would be 2N+1. Therefore, the sum of the first N+1 odd numbers would be N^2 + (2N + 1), which simplifies to (N+1)^2. This proves that if the statement applies to N, it also applies to N+1. 
+                    <br><br>
+                    Finally, the base case is N = 1. The sum of the first 1 odd numbers is 1, which is equal to 1^2. Therefore, by mathematical induction, the sum of the first N odd numbers is N^2 for all positive integers N.
+                    <br><br>
+                    Now, back to the horses theorem. Obviously this is untrue, but the logic seems sound? The flaw in the proof lies in the step from N = 1 to N = 2. Our proof involved removing a horse from the group and then checking the remaining horses, but this implicitly needs at least 3 horses to work. If there are only 2 horses, then removing one horse leaves one other horse, and there is no overlap between the two groups of horses and therefore no valid proof. This is where the proof falls apart.
+                    <br><br>
+                    Despite this flaw, mathematical induction is very powerful in mathematical proofs. Just make sure to check for any edge cases like this one!
+                </p>
+                
+            </div>
+        </div>
+        
+
+
+    </body>
+</html>
