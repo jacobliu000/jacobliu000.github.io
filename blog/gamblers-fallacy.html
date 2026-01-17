@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+        <link rel="icon" type="image/x-icon" href="JL.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../tailwind-config.js"></script>
+    <head>
+        <title>
+            Simulating the concept of gambler's fallacy  using Python | Jacob Liu
+        </title>    
+        <meta charset="UTF-8">
+        <meta name="description" content="A python program that simulates the gambler's fallacy concept and shows how it is a cognitive bias.">
+    </head>
+
+
+    <body class="bg-mainbackground text-textcol font-sans-['Open_Sans'] text-lg">
+
+        <nav class="text-lg p-4 px-12">
+                <div class="flex space-x-6 justify-end">
+                <a href="../index.html" class="text-textcol hover:text-texthover">about</a>
+                <a href="../blog.html" class="text-textcol hover:text-texthover">blog</a>
+                </div>
+        </nav>
+
+        <div class="flex justify-center w-full h-center items-center">
+            <div class="w-[60%] p-24">
+                <h1 class="text-3xl">Simulating the concept of gambler's fallacy  using Python</h1>
+                <h2 class="text-sm">17 January 2026 | Jacob Liu</h2>
+
+                <br>
+
+                <p>
+                    Imagine you flipped 10 coins in a row, and all of them were heads. What are the chances that the next coin flip will be tails? Many people would say that the chances are much higher than 50%, since there have been so many heads in a row. This is known as the gambler's fallacy, or when a gambler believes that they are "due" for a win because of a streak of losses. However, in reality, the chances of the next coin flip being tails is still 50%, even though the past 10 have all been heads.
+                    <br><br>
+                    To simulate this, I wrote a program in Python that flips a coin 1000 times and tracks the results. The program checks for streaks, and creates a perceived probability of getting heads based on the current streak, using exponential decay. For example, if there have been 5 heads in a row, the probability of the next one being heads would be much lower. This simulates the gambler's fallacy concept, where the opposite of the current streak is more and more likely to happen.
+                    <br><br>
+                    Now, lets create the actual game. If the gambler correctly bets the result, they will receive 80% of the money they put in as profit. If they are wrong, they lose their money. Mathematically, this means that they need to have a win rate of about 55% to break even. Obviously, the chances of either heads or tails is below 55%, but this program simulates a gambler who bets based off his perceived probability of the next flip. Our hypothetical gambler will bet on either heads or tails based off whichever has a higher perceived probability, or whichever hasn't appeared in a while.
+                    <br><br>
+                    Now, what happens? Let's take a look at the results. Here's an example of the profit graph from one simulation:
+                    <img src="images/gamblers_profit_ot.png" class="mx-auto w-[75%]">
+                    <br><br>
+                    It's very obvious that the gambler is losing money over time. Let's run the simulation multiple times and see what happens.
+                    <br><br>
+                    Average profit:  -49.8175999999983 <br>
+                    Average correct guess %:  0.5006669905649773 <br>
+                    Luckiest profit:  4.600000000002012<br>
+                    Luckiest correct guess %:  0.5323590814196242<br>
+                    Made profit %:  0.005<br>
+                    <br><br>
+                    Even through 1000 trials, the gambler is still losing huge amounts of money on average. The correct guess rate is extremely close to 50%, showing that the gambler's fallacy is indeed a cognitive bias, no matter the current streak. Although there were some lucky trials where the gambler made a profit, they were extremely rare. Overall, this simulation proves that the gambler's fallacy is indeed a cognitive bias, and that past results don't affect future ones in any way.
+                    <br><br>
+
+                    Check out the original code:
+                    <script src="https://gist.github.com/jacobliu000/da0a37f64813cd6644b7b764ac86a646.js"></script>
+                </p>
+                
+            </div>
+        </div>
+        
+
+
+    </body>
+</html>
