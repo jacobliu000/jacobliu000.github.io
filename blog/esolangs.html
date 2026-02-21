@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+        <link rel="icon" type="image/x-icon" href="JL.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../tailwind-config.js"></script>
+    <head>
+        <title>
+            The World's Most Unique Programming Language | Jacob Liu
+        </title>    
+        <meta charset="UTF-8">
+        <meta name="description" content="This article is about esoteric programming languages, specifically Brainfuck, and how it works.">
+    </head>
+
+
+    <body class="bg-mainbackground text-textcol font-sans-['Open_Sans'] text-lg">
+
+        <nav class="text-lg p-4 px-12">
+                <div class="flex space-x-6 justify-end">
+                <a href="../index.html" class="text-textcol hover:text-texthover">about</a>
+                <a href="../blog.html" class="text-textcol hover:text-texthover">blog</a>
+                </div>
+        </nav>
+
+        <div class="flex justify-center w-full h-center items-center">
+            <div class="w-[60%] p-24">
+                <h1 class="text-3xl">The World's Most Unique Programming Language</h1>
+                <h2 class="text-sm">20 February 2026 | Jacob Liu</h2>
+
+                <br>
+
+                <p>
+                    Every programming language has its own unique features and quirks, but generally, they are all useable for day to day programming tasks. Whether I code a project in C++ or Python really depends on my own preferences and skill level, but I can still get the same job done in either language. However, there is a category of programming languages called esoteric programming languages, or esolangs for short, which are designed to be as difficult as possible.
+                    <br><br>
+                    Esolangs are not designed with ease of use in mind, but rather made to be as difficult as possible. They are often created as a joke or a challenge for programmers, and are not meant for practical uses. Despite this, a good esolang can technically be used to write any program, but it would be extremely difficult and time consuming to do so. In fact, there is an entire internet wiki dedicated to them, which you can check out <a href="https://esolangs.org/wiki/Main_Page" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-texthover font-semibold">here</a>.
+                    <br><br>
+                    Today, I'll be discussing the most famous esolang of them all: Brainfuck. Brainfuck was created in 1993 by a Swiss student and designed to be as minimalistic as possible. The language consists of memory cells that can hold numbers up to 255, and a data pointer that moves left and right to read and write to those cells. Using this basic concept, the language can do almost anything, but it is extremely difficult to write the simplest of programs. The language consists of only 8 commands, which are as follows:
+                    <br><br>
+                    <ul class="list-decimal list-inside space-y-1">
+                        <li> > : increments the data pointer rightward</li>
+                        <li> < : decrements the data pointer leftward</li>
+                        <li> + : increment the current cell by 1</li>
+                        <li> - : decrement the current cell by 1</li>
+                        <li> . : output the byte at the data pointer </li>
+                        <li> , : receive one byte of input and store it here</li>
+                        <li> [ : if the byte in the data pointer is 0, jump to the next ]</li>
+                        <li> ] : if the byte in the data pointer isn't 0, jump to the last [</li>
+                    </ul>
+
+                    <br><br>
+                    Obviously, this is overly complicated and can't easily be used to write a program, but it is still Turing complete, meaning that it can technically be used to write any program. Just to write the letter "A" requires this many commands: ++++++++[>++++++++<-]>+. This uses a loop to increment the second cell to 64 by adding 8 8 times before adding one and outputting it, as 65 is the ASCII code for "A". Writing anything more complex would require a lot more commands and be very difficult to track and code.  
+                    <br><br>
+                    So, what is this language actually used for? Firstly, it shows us the true core of programming. Most programming languages have built in functions and features: loops, classes, libraries, memory managament and so on. Brainfuck removes all of this and shows us the true core of programming, which is just manipulating memory. All abstractions in all programming languages can be reduced to these simple features, and Brainfuck is remarkable in that it shows this. In fact, I think that this language could unironically be used as a way to practice the critical thinking and strategic planning required in programming, as you have to plan out every single step and think about how to write your program.
+                    <br><br>
+                    Finally, Brainfuck is just a fun challenge for programmers. It's like a puzzle that you can solve with code. You can find all kinds of Brainfuck games and programs online to try and understand and solve, which is a fun way to practice and challenge yourself. While it may not be mainstream or useful in the real world, Brainfuck is an interesting and unique programming language. If you're interested, you should definitely do some more in-depth research on it.
+                    <br><br>
+
+                </p>
+                
+            </div>
+        </div>
+        
+
+
+    </body>
+</html>
