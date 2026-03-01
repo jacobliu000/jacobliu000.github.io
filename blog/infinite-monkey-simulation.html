@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+        <link rel="icon" type="image/x-icon" href="JL.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../tailwind-config.js"></script>
+    <head>
+        <title>
+            How many monkeys would it take to write Hamlet? | Jacob Liu
+        </title>    
+        <meta charset="UTF-8">
+        <meta name="description" content="I used python to simulate a popular theory about monkeys and typewriters.">
+    </head>
+
+
+    <body class="bg-mainbackground text-textcol font-sans-['Open_Sans'] text-lg">
+
+        <nav class="text-lg p-4 px-12">
+                <div class="flex space-x-6 justify-end">
+                <a href="../index.html" class="text-textcol hover:text-texthover">about</a>
+                <a href="../blog.html" class="text-textcol hover:text-texthover">blog</a>
+                </div>
+        </nav>
+
+        <div class="flex justify-center w-full h-center items-center">
+            <div class="w-[60%] p-24">
+                <h1 class="text-3xl">How many monkeys would it take to write Hamlet?</h1>
+                <h2 class="text-sm">28 February 2026 | Jacob Liu</h2>
+
+                <br>
+
+                <p>
+                The infinite monkey theorem states that if you have an infinite number of monkeys typing on an infinite number of typewriters for an infinite amount of time, they will eventually produce the complete works of Shakespeare. This is a popular thought experiment that illustrates the concept of infinity and randomness, and it makes sense. However, I wanted to see how long this would take in practice, so I wrote a Python simulation to find out.
+                <br><br>
+                My simulation isn't as infinite. Instead of infinite monkeys, we'll have one monkey, and instead of infinite time, we'll have a certain number of iterations. 
+                <br><br>
+                The first thing I need to do is actually make the program. This is actually more challenging than it sounds, because the large number of simulations needed to do anything is astounding. Because of this, I needed to optimize my code as much as possible. First, I found a dataset of the 10,000 most popular English words. I tried using a list of all English words, but it was large and filled with archaic and unused words that, in my opinion, don't count as real "words". 
+                <br><br>
+                I then created a function that generates random characters based on python's random function. I decided to cap word length at 12 characters, so I saved the last 12 characters typed by the monkey and checked if there were any words that matched those characters. This part is the bottleneck of the program. The seemingly intuitive way would be to check if the last 12 chadacters match any of the 10,000 words, btu this is very inefficient. If the dictionary is size N, and I have T iterations, then the program would run at O(NT). Instead, I turned the dictionary into a set, which is a data structure that allows for instant lookup, or O(1) lookup. This way, the program runs at O(T), which is much more efficient.
+                <br><br>
+                With that bottleneck out of the way, I started running the program. When I ran it for 1000 iterations, I found 556 2-letter words, 39 3-letter words and 4 4-letter words, which included "dash", "sees", "wars" and "guys". 
+                <br><br>
+                As I increased the number of iterations, I found more and more words. Running it at 10,000 iterations was nearly instant, and so was 100,000. At this point, I was finding 5-letter words and rarely, 6-letter words. I increased it to 1,000,000 iterations, and the program noticeably slowed, but the response was still within seconds. Here is the result from one test case of 1,000,000 iterations: I found 585941 2 letter words, 38531 3 letter words, 2476 4 letter words, 116 5 letter words and 6 6 letter words. Those included "asking", "verify", "pierre", "motion", "jonny", and "triple". 
+                <br><br>
+                Now, for reference, Hamlet has around 160,000 to 180,000 characters. The odds of a monkey typing all of that is astronomically low. My program, which runs thousands of iterations per second, only found 6 6 letter words at separate instances in 1,000,000 iterations. The odds of it finding 160,000 straight characters of a play is so low that it would take an insurmountable, infinite amount of time. Even typing the word Hamlet would take 26^6 iterations, which is over 300 million iterations. A monkey could type 100 characters per second, all day every day, it would still take over a month just to type the title of the play.
+                <br><br>
+                Does that mean I can't stretch it? I decided to run it once at 100,000,000 iterations. It took multiple minutes, and I found the following: 58573200 2-letter words, 3821397 3-letter words, 245665 4-letter words, 11597 5-letter words, 499 6-letter words, 22 7-letter words and 3 8-letter words. Those lucky words were "patricia", "oriented" and "examined". Even with 100 million iterations, I still couldn't find a single 9 letter word. 
+                <br><br>
+                In conclusion, while the infinite monkey theorem is technically true, it's practically impossible. The sheer scale of things didn't really hit me until I simulated it. For example, the jump from a 6 letter to 8 letter word was huge. It took upwards of millions of characters to find an 8-letter word, emphasizing the sheer difficulty and luck involved in getting anything of substance. Although, I'm sure that with enough time and optimization, this program could produce at least something meaningful, but it would still be a long shot to get anything close to Hamlet.
+                
+            <br><br>
+        You can read my code here. <br>
+    <script src="https://gist.github.com/jacobliu000/be82b694f83b0f076b26b6f82b10572e.js"></script>
+</p>
+
+
+                
+            </div>
+        </div>
+        
+
+
+    </body>
+</html>
