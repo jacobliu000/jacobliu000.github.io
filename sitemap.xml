@@ -50,4 +50,9 @@
     <loc>blog/infinite-monkey-simulation.html</loc>
     <lastmod>2026-02-28</lastmod>
   </url>
+
+            <url>
+    <loc>blog/karatsube-algorithm.html</loc>
+    <lastmod>2026-06-01</lastmod>
+  </url>
 </urlset>
