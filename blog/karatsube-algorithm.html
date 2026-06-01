@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+        <link rel="icon" type="image/x-icon" href="JL.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../tailwind-config.js"></script>
+    <head>
+        <title>
+            How does a computer multiply numbers? | Jacob Liu
+        </title>    
+        <meta charset="UTF-8">
+        <meta name="description" content=".">
+    </head>
+
+
+    <body class="bg-mainbackground text-textcol font-sans-['Open_Sans'] text-lg">
+
+        <nav class="text-lg p-4 px-12">
+                <div class="flex space-x-6 justify-end">
+                <a href="../index.html" class="text-textcol hover:text-texthover">about</a>
+                <a href="../blog.html" class="text-textcol hover:text-texthover">blog</a>
+                </div>
+        </nav>
+
+        <div class="flex justify-center w-full h-center items-center">
+            <div class="w-[60%] p-24">
+                <h1 class="text-3xl">How does a computer multiply numbers?</h1>
+                <h2 class="text-sm">1 June 2026 | Jacob Liu</h2>
+
+            <br>
+
+            Everybody uses calculators in their day to day lives, but have you ever wondered how they work? How does a computer do arithmetic? 
+            <br><br>
+
+            To begin, addition and subtraction are relatively straightforward. Currently, I'm working on a project to implement a large number library in C++, and addition and subtraction are relatively simple. Just like how you were taught in elementary school, I used a carry system to add and subtract numbers. Every digit is added, and the excess is carried over to the next digit. The only difference is that instead of using base 10 digits, I used base 10^9 digits, allowing me to store larger numbers. Subtraction also uses a similar system. This system is fast enough because it is essentially O(N), where there are N digits. Adding an additional digit to a number linearly increases the time it takes to add or subtract, and the overall number of digits is relatively small compared to the size of the number, so it is efficient enough for my purposes.
+
+            <br><br>
+            A naive way to do multiplication is to use repeated addition, similar to how elementary students are taught how to. However, the issue with doing it this way is that it becomes extremely inefficient. The system taught in schools repeatedly adds the numbers together, meaning that it would grow exponentially and be unsustainable. The traditional multiplication process is O(N^2). Instead, computers need a more efficient method to multiply numbers.
+            <br><br>
+            One of the most common algorithms used to multiply numbers is the Karatsuba algorithm, and its what I implemented. The algorithm comes from a university student at the Moscow State University, who created the algorithm in response to a conjecture by Soviet mathematician Andrew Kolmogrov, who argued that there is no algorithm that multiplies numbers faster than O(N^2).
+            <br><br>
+            The algorithm uses a divide and conquer approach to multiply numbers. It breaks down the numbers into smaller parts and then multiplies them. You can rewrite a number x as 
+            <br><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">x = B * a + b</span>
+            <br><br>
+            where B is (10)^(N/2) and represents half of the number. If you want to multiply x and y, you could do it like this:
+            <br><br>
+
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">x = a*B + b</span><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">y = c*B + d</span><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">xy = (aB+b)(cB+d)</span> <br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">xy = acB^2 + (ad+bc)B + bd</span><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">z1 = ac</span><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">z2 = (ad+bc)</span><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">z3 = bd</span><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">xy =z1*B^2 + z2*B + z3</span>
+
+
+            <br><br>
+            Notice that this requires four total multiplications, which are ac, ad, bc and bd. The multiplications with the B^2 and B can be ignored; this is because B is just a power of ten and the multiplication is simply shifting the digits leftward. However, Karatsuba's algorithm uses a trick in order to reduce the number of multiplications to three. 
+            <br><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">z2 = ad + bc</span><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">= ad + bc + ab + cd - ab - cd</span><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">= (a+b)(c+d) - ac - bd</span><br>
+            <span class="mx-0 my-4 font-['Google_Sans_Code']">= (a+b)(c+d) - z1 - z3 </span>
+            <br><br>
+            Before, calculating z2 required two multiplications, but it now only requires one multiplication, reducing the overall number of multiplications to three. This is a significant improvement as it reduces the time complexity of the algorithm to O(N^log2(3)). 
+            <br><br>
+            The karatsuba algorithm is a significant improvement over the traditional multiplication algorithm, and it is widely used in computer science. My project uses it as part of the implementation of multiplication. By conducting recursion the algorithm can be applied to smaller parts of the number and multiplying large numbers quickly. This is a part of my larger project, called Gargantua, which I am making in order to understand C++ libraries and how they are made. I've learned alot about basic low level programming like multiplication and how they work behind the scenes, and it's been fun to work on. The next step of the project is to implement division, which I'm excited to learn and implement. You can see the project and its progress on github a href="https://github.com/jacobliu000/CppBigInt" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-texthover font-semibold">here</a>.
+
+</p>
+
+
+                
+            </div>
+        </div>
+        
+
+
+    </body>
+</html>
