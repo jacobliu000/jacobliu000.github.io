@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+        <link rel="icon" type="image/x-icon" href="JL.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../tailwind-config.js"></script>
+    <head>
+        <title>
+            Here's what making my own AI model taught me about neural networks | Jacob Liu
+        </title>    
+        <meta charset="UTF-8">
+        <meta name="description" content=".">
+    </head>
+
+
+    <body class="bg-mainbackground text-textcol font-sans-['Open_Sans'] text-lg">
+
+        <nav class="text-lg p-4 px-12">
+                <div class="flex space-x-6 justify-end">
+                <a href="../index.html" class="text-textcol hover:text-texthover">about</a>
+                <a href="../blog.html" class="text-textcol hover:text-texthover">blog</a>
+                </div>
+        </nav>
+
+        <div class="flex justify-center w-full h-center items-center">
+            <div class="w-[60%] p-24">
+                <h1 class="text-3xl">Here's what making my own AI model taught me about neural networks</h1>
+                <h2 class="text-sm">22 June 2026 | Jacob Liu</h2>
+
+            <br>
+
+            In today's day and age, AI is everywhere. However, most people don't understand how it works. Even programmers often rely on prebuilt libraries and models to implement it, without really understanding the underlying concepts. I watched the famous video series by 3Blue1Brown on neural networks, and it gave me a grasp on the general concepts, but I wanted to understand it more deeply. So, I decided to make my own AI model from scratch.
+            <br><br>
+            Neural networks take in inputs, and in each layer, those inputs are multiplied by weights and then summed and have a bias added to them. This number is then normalized through the sigmoid function, which outputs a number between 0 and 1. The theory is that through multiple layers and enough neurons, the network can learn patterns and be able to use those inputs to predict outputs. 
+            <br><br>
+            The simplest network requires just one neuron and two inputs, and I made one that predicts the outcome of the OR binary function. If you don't know, the OR function returns 0, or false, if both values inputted are false; it returns 1, or true, otherwise. The forward pass is relatively simple: because the scale of the model is so small, you don't need matrix multiplication. By simply looping through every input and multiplying it by its corresponding weights, and then adding the bias at the end, you can get the output of the neuron. Because the model is just 2 inputs and 1 output, it requires a very small amount of computation. 
+            <br><br>
+            The more interesting part, however, is the training. This is the part that I struggled to understand at first. While in theory it sounds simple, the mathematical proof involves using the chain rule in calculus. It took me a bit of time and a lot of asking questions to understand it, but I finally got it. Essentially, the training process involves calculating the "cost" of the model, which is the square of the difference between the actual answer and the model's prediction. Then, optimal "nudges" are made towards the weights and biases in the network, which are calculated through the chain rule and made to help minimize the cost. With enough repetitions, this process will "nudge" the weights and biases to optimal values that allow the model to correctly predict the output. This process is called gradient descent because the weights and biases descend down the gradient of the cost function.
+            <br><br>
+            The nudges made to the weights and biases are calculated through a process called backpropagation. The rate of change of the cost function with respect to the weights and biases is calculated through the chain rule. I won't get into the exact details, but you can see 3B1B's amazing video on it <a href="https://www.youtube.com/watch?v=tIeHLnjs5U8" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-texthover font-semibold">here</a>. The important thing to understand is that the weights and biases are changed in a way that minimizes the cost function, and this is done through backpropagation. It's also admittedly a very difficult concept to understand. 
+            <br><br>
+            After this, the OR model finally began working. I was able to train it to correctly predict the output of the OR function, which was very satisfying. However, I was still hungry to understand more. The next challenge I decided to take on was the XOR function. The XOR function returns 1 if the inputs are two different numbers, while returning 0 if they are the same. This is more complicated for neural networks because it can't be done through an output layer by itself. Instead, a hidden layer in the middle is required in order for the model to properly work. While the forward pass logic is the same, the training process is a bit more complicated. I decided to make this model in a 2-2-1 structure, where it takes two inputs, has a hidden layer of size 2, and outputs 1 value.
+            <br><br>
+            The initial steps to backpropagation are the same. The gradients, or the "nudges" made to the weights and biases of the output neuron are calculated in the same way. However, the gradients of the weights and biases of the hidden layer are done slightly differently. By applying the chain rule deeper, the gradient of the hidden layer's weights and biases can be calculated. They are dependent on a variety of different numbers, including the weights of the output layer, the initial input, and the output of the hidden layer. Once again, the calculus is complicated, but the important thing to understand is that the gradient becomes more complicated as you backpropagate into the network. 
+            <br><br>
+            The XOR model was a bit more difficult to train, but it eventually worked and was able to predict things. However, one issue that it faced was that it constantly outputted 0.5 for certain inputs. This was peculiar, so I decided to look into it. Apparently, the XOR function is famous for this. The model can get stuck in a valley when descending, known as a local minimum or saddle point. Because of the symmetry in the initial weights, the network essentially 'gives up' and guesses 0.5 for everything to hedge its bets. My solution was to simply add more training epochs.
+           <br><br>
+           To finally test the model, I decided to expand it to a 2-4-1 structure. I decided to make the model predict whether or not a coordinate was inside a circle. The model takes in two inputs, the x and y coordinates, and outputs 1 if the point is inside the circle. The circle I selected was centered at (0.5, 0.3) with a radius of 0.5, in hopes of being able to test whether or not the model would be able to handle shapes. After facing a few issues with the model, I was able to get it to work. The model is able to predict whether or not a point is inside of that circle, which is very impressive. 
+            <br><br>
+            Obviously, this model isn't very complicated. The one that Grant made in his series uses two hidden layers of size 16, which is much more complicated than the single size 4 hidden layer in mine. However, the math remains the same, and the overall concepts are the same. I hope to implement numpy or some form of faster calculation into my neural network, which will allow me to make it scalable and train it on more complex models. This experience taught me a lot about how neural networks work and the specific nitty gritty behind them. 
+            <br><br>
+            You can check out the code for the network on github <a href="https://github.com/jacobliu000/neuralnet_from_scratch/tree/main" class="underline decoration-dotted underline-offset-2 decoration-2 hover:text-texthover font-semibold">here</a>.
+
+
+</p>
+
+
+                
+            </div>
+        </div>
+        
+
+
+    </body>
+</html>
